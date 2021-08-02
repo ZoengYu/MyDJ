@@ -8,4 +8,5 @@ urlpatterns = [
 	path("save/<slug:slug>", views.save, name="index"),
 	path("delete/<int:id>", views.delete, name="index"),
 	path("show/", views.show, name="index"),
+	path("", views.home, name="home")
 ]
