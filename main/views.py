@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList, Item
+from .form import CreateNewList
 
 # Create your views here.
 def index(response,id):
@@ -33,3 +34,15 @@ def show(response):
 
 def home(response):
 	return render(response, "main/home.html",{})
+
+def create(response):
+	if response.method == "POST": #POST will encrypt
+	  form = CreateNewList(response.POST) #create dictionary and save value into
+	  if form.is_valid(): #check all value have input
+	    	n = form.cleaned_data["name"] #get name by user type
+	    	t = ToDoList(name=n)
+	    	t.save()
+	  return HttpResponseRedirect("/%i" %t.id)
+	else: #GET
+		form = CreateNewList()
+	return render(response,"main/create.html", {"form":form})
