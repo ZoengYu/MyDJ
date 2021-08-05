@@ -2,10 +2,10 @@
 
 {% block title %} Create New List {% endblock %}
 
-{% block content %} Create Page
+{% block content %} Create New Table
 <form method="post" action="/create/">
 	{% csrf_token %}
 	{{form.as_ul}} #as_p
-	<button type="submit" , name="save"> Create Table New</button>
+	<button type="submit" , name="save"> Create New Table</button>
 </form>
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% block title %}All Table{% endblock %}
+
+{% block content %}
+<h1>All Table We Have Now</h1>
+<form method="post" action="#">
+	{% csrf_token %}
+	<u1>
+		{% for item in t %}
+		<li><input type="checkbox" ,value="clicked" , name="c{{item.id}}">{{item}}
+		</li>
+		{% endfor %}
+	</u1>
+	<button type="submit" , name="delete" , value="delete">delete</button>
+	<input type="text" , name="new">
+	<button type="submit" , name="createtable" , value="createtable">Add Table</button>
+</form>
+{% endblock %}

@@ -55,7 +55,21 @@ def delete(response,id):
 
 def show(response):
 	t = ToDoList.objects.all()
-	return HttpResponse("<h1> Table \n%s have</h1>" %t[0])
+	if response.method == "POST":
+		print(response.POST)
+		if response.POST.get("delete"):
+			for item in t:
+				if response.POST.get("c"+str(item.id)) == "on":
+					print("delete table: ")
+					t.filter(id=item.id).delete()
+		elif response.POST.get("new"):
+			txt = response.POST.get("new")
+			if len(txt)<1:
+				return render(response, "main/show.html",{"t":t})
+			else:
+				t.create(name=txt)
+				
+	return render(response, "main/show.html",{"t":t})
 
 def home(response):
 	return render(response, "main/home.html",{})
