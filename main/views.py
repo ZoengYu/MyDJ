@@ -62,6 +62,7 @@ def show(response):
 				if response.POST.get("c"+str(item.id)) == "on":
 					print("delete table: ")
 					t.filter(id=item.id).delete()
+			return HttpResponseRedirect("/show/")
 		elif response.POST.get("new"):
 			txt = response.POST.get("new")
 			if len(txt)<1:

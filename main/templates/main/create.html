@@ -2,10 +2,15 @@
 
 {% block title %} Create New List {% endblock %}
 
-{% block content %} Create New Table
-<form method="post" action="/create/">
+{% block content %}
+<h3>Create Table</h3>
+<form method="post" action="/create/" class="form-group">
 	{% csrf_token %}
-	{{form.as_ul}} #as_p
-	<button type="submit" , name="save"> Create New Table</button>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<button type="submit" , name="save" , class="btn btn-success"> Create New</button>
+		</div>
+		{{form.name}} : #as_ul,as_p
+	</div>
 </form>
 {% endblock %}

@@ -11,8 +11,14 @@
 		</li>
 		{% endfor %}
 	</u1>
-	<button type="submit" , name="delete" , value="delete">delete</button>
-	<input type="text" , name="new">
-	<button type="submit" , name="createtable" , value="createtable">Add Table</button>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<input type="text" , name="new">
+			<button type="submit" , name="createtable" , value="createtable" , class="btn btn-success">Add
+				Table</button>
+		</div>
+	</div>
+	<button type="submit" , name="delete" , value="delete" , class="btn btn-danger">delete</button>
+
 </form>
 {% endblock %}
