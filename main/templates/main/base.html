@@ -48,6 +48,7 @@
 		<a href="/show">All Table</a>
 		<a href="/create">Create Table</a>
 		<a href="/2">View 2 List</a>
+		<a href="/chi">Chi Chi</a>
 	</div>
 	<div id="content" , name="content" , class="main">
 		<div class="row justify-content-center">
@@ -56,6 +57,14 @@
 				<hr class="mt-0 mb-4">
 				{% block content%}
 				{% endblock %}
+				{% if user.is_authenticated %}
+				<p> (You're Login Now...)</p>
+				{% else %}
+				<div style="padding-left:6px;">
+					<p>Login <a href="/login"> Here</a></p>
+				</div>
+				{% csrf_token %}
+				{% endif %}
 			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
