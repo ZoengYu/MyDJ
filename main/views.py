@@ -1,3 +1,4 @@
+from django.contrib import auth
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList, Item
@@ -86,3 +87,18 @@ def create(response):
 	else: #GET
 		form = CreateNewList()
 	return render(response,"main/create.html", {"form":form})
+def login(request):
+	if request.user.is_authenticated:
+		return HttpResponseRedirect('/')
+	username = request.POST.get('username','')
+	password = request.POST.get('password','')
+	user = auth.authenticate(username=username,password=password)
+	if user is not None and user.is_active:
+		auth.login(request,user)
+		return HttpResponseRedirect('/')
+	else:
+		return render(request,'login.html',locals())
+
+def logout(request):
+	auth.logout(request)
+	return HttpResponseRedirect('/')

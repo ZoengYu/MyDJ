@@ -48,7 +48,6 @@
 		<a href="/show">All Table</a>
 		<a href="/create">Create Table</a>
 		<a href="/2">View 2 List</a>
-		<a href="/chi">Chi Chi</a>
 	</div>
 	<div id="content" , name="content" , class="main">
 		<div class="row justify-content-center">
@@ -58,7 +57,8 @@
 				{% block content%}
 				{% endblock %}
 				{% if user.is_authenticated %}
-				<p> (You're Login Now...)</p>
+				<p> <a href="/logout">Log out</a></p>
+				{% csrf_token %}
 				{% else %}
 				<div style="padding-left:6px;">
 					<p>Login <a href="/login"> Here</a></p>
