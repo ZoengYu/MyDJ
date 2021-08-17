@@ -86,3 +86,6 @@ def create(response):
 	else: #GET
 		form = CreateNewList()
 	return render(response,"main/create.html", {"form":form})
+
+def chi(response):
+	return render(response,"main/chi.html",{})

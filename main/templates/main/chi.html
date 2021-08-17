@@ -1,0 +1,153 @@
+{% extends "main/base.html" %}
+{% block title %}All Table{% endblock %}
+{% block content %}
+{% load static %}
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta charset="utf-8">
+<div id="center">
+	<div id="img">
+		<img src="/static/xiaochi.png" alt="xiaochi logo" width="250" height="150" padding:"10px">
+	</div>
+	<br>
+	<h2>
+		<span style="color:orange;font-weight:bold;margin:auto;text-align:center;display:block;">
+			BMR&TDEE計算機</span>
+	</h2>
+	<script>
+		function add() {
+			var h = parseInt(document.getElementById('height').value)
+			var w = parseInt(document.getElementById('weight').value)
+			document.getElementById('result').value = Math.round(w * 2.2 * 10);
+		}
+		function TDEE_Cal() {
+			var v = document.getElementById('result').value
+			var v2 = document.getElementById('select').value
+			document.getElementById('TDEE_result').value = eval(v * v2);
+		}
+	</script>
+	<br>
+
+	<body>
+		<meta charset="utf-8">
+		<style>
+			html,
+			body {
+				margin: 0 auto;
+				background-color: rgb(252, 246, 252);
+			}
+
+			#img {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			button {
+				padding: 5px 15px;
+				background: #ccc;
+				border: 0 none;
+				cursor: pointer;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+			}
+
+			input {
+				padding: 5px 15px;
+				border: 3px black solid;
+				background: rgb(235, 225, 225);
+				border: 0 none;
+				cursor: pointer;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+			}
+
+			#button1 {
+				padding: 5px 15px;
+				border: 3px #000000 solid;
+				background: rgb(240, 209, 106);
+				border: 0 none;
+				cursor: pointer;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				color: rgb(255, 255, 255);
+				position: relative;
+				top: 15px;
+			}
+
+			#button2 {
+				padding: 5px 15px;
+				border: 3px #000000 solid;
+				background: rgb(106, 148, 240);
+				border: 0 none;
+				cursor: pointer;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				color: rgb(255, 255, 255);
+				position: relative;
+				top: 15px;
+			}
+
+			output {
+				padding: 5px 15px;
+				border: 3px #000000 solid;
+				border: 0 none;
+				cursor: pointer;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				color: rgb(232, 29, 29);
+				font-size: large;
+			}
+
+			p {
+				color: red;
+			}
+
+			.info {
+				width: 100%;
+				margin-right: 100px;
+			}
+
+			#center {
+				margin: 0 auto;
+				width: 70%;
+				height: 200px;
+			}
+		</style>
+		<div class="infomation-table">
+			<div class="info">
+				<strong>性別: </strong> <input type="radio" name="sex" value="male"> 男性 <input
+					type="radio" name="sex" value="female">女性
+				<br>
+				<strong>年齡(AGE): </strong><input class="form-control" id="age" type="text" name="年齡"
+					placeholder="請輸入年齡！" /><br />
+				<strong>身高(CM)&ensp;: </strong><input class="form-control" id="height" type="text"
+					name="身高" placeholder="請輸入身高！" /><br />
+				<strong>體重(KG)&ensp;: </strong><input class="form-control" id="weight" type="text"
+					name="體重" placeholder="請輸入體重！" />
+			</div>
+		</div>
+		<button id="button1" onclick="add();"> 計算 </button><br>
+		<br>
+		<strong>基礎代謝率為(kcal):</strong><output id="result"></output>
+		<br />
+		<hr>
+		<hr class="mt-0 mb-4">
+		<strong>請選擇你的日常活動量: </strong>
+		<br>
+		<select class="selectpicker show-tick form-control" width="25px" id="select">
+			<option selected>選項 </option>
+			<option value=1.2>靜態生活/久坐/沒什麼運動</option>
+			<option value=1.375>輕度活動/每週運動1-3次</option>
+			<option value=1.55>適度活動/每週運動3-5次</option>
+			<option value=1.725>大量活動/每週運動5-7次</option>
+			<option value=1.9>高度活動/每週運動多於7次</option>
+		</select>
+		<br>
+		<button id="button2" onclick="TDEE_Cal();"> 計算 </button><br>
+		<br>
+		<strong>每日總消耗熱量TDEE(kcal)：</strong><span style=color:red><output id="TDEE_result"
+				*基礎代謝率></output></span>
+	</body>
+</div>
+{% endblock %}
