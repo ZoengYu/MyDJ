@@ -102,3 +102,6 @@ def login(request):
 def logout(request):
 	auth.logout(request)
 	return HttpResponseRedirect('/')
+
+def xing4(response):
+	return render(response, "main/xing4eggegg.html",{})

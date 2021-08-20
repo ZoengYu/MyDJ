@@ -10,6 +10,7 @@ urlpatterns = [
 	path("show/", views.show, name="index"),
 	path("", views.home, name="home"),
 	path("create/",views.create, name="create"),
+	path("xing4eggegg/",views.xing4),
 	# path('accounts/profile/',views.login),
     	# path('logout/',views.logout),
 ]
